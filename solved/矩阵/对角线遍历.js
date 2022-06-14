@@ -14,48 +14,46 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 
-/**
- * @param {number[][]} mat
- * @return {number[]}
- */
 var findDiagonalOrder = function (mat) {
-	let x = 0
-	let y = 0
-	let direction = 'up'
-	let m = mat.length
-	let n = mat[0].length
-	let count = 0
-	let res = []
-	while (count < m * n) {
-		res.push(mat[y][x])
-		count++
-		if (direction === 'up') {
-			if (x === n - 1) {
-				y += 1
-				direction = 'down'
-			} else if (y === 0) {
+  let x = 0 // 横向
+  let y = 0 // 纵向
+  let m = mat.length // 纵向长度
+  let n = mat[0].length // 横向长度
+  let direction = 'up' // up右上移动 down左下移动
+
+  let res = []
+  for(let i = 0; i < m * n; i++) {
+    res.push(mat[y][x])
+    if(direction === 'up') {
+      if(x + 1 > n - 1) {
+        y += 1
+        direction = 'dowm'
+        continue
+      }
+      if(y - 1 < 0) {
         x += 1
-				direction = 'down'
-			} else {
-				x += 1
-				y -= 1
-			}
-		} else {
-			if (y === m - 1) {
-				x += 1
-				direction = 'up'
-			} else if (x === 0) {
-				y += 1
-				direction = 'up'
-			} else {
-				x -= 1
-				y += 1
-			}
-		}
-	}
-	return res
+        direction = 'dowm'
+        continue
+      }
+      x += 1
+      y -= 1
+    } else {
+      if(y + 1 > m - 1) {
+        x += 1
+        direction = 'up'
+        continue
+      }
+      if(x - 1 < 0) {
+        y += 1
+        direction = 'up'
+        continue
+      }
+      y += 1
+      x -= 1
+    }
+  }
+  return res
 }
 
-mat = [[2,5],[8,4],[0,-1]]
-
+mat = [[1,2],[3,4]]
 console.log(findDiagonalOrder(mat))
