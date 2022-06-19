@@ -33,7 +33,7 @@ var duplicateZeros = function (arr) {
       i++
     }
   }
-  arr.splice(n, arr.length)
+  arr.length = n
   return arr
 }
 // 双指针
