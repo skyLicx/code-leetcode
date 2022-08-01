@@ -9,20 +9,12 @@
  * @param {number} n
  * @return {string}
  */
-var generateTheString = function (n) {
+ var generateTheString = function (n) {
 	let s = ''
-	let i = 0
 	if (n % 2 === 0) {
-		while (i < n - 1) {
-			s += 'a'
-			i++
-		}
-		s += 'b'
+		s = 'a'.repeat(n - 1) + 'b'
 	} else {
-		while (i < n) {
-			s += 'a'
-			i++
-		}
+		s = 'a'.repeat(n)
 	}
 	return s
 }
