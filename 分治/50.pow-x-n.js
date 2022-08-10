@@ -11,17 +11,13 @@
  * @return {number}
  */
 var myPow = function (x, n) {
-	if (n == 0) {
+	return n >= 0 ? quickMul(x, n) : 1.0 / quickMul(x, -n)
+}
+const quickMul = (x, n) => {
+	if (n === 0) {
 		return 1
 	}
-	let t = myPow(x, parseInt(n / 2))
-	if (n % 2 == 1) {
-		return t * t * x
-	}
-	return t * t
+	const y = quickMul(x, parseInt(n / 2))
+	return n % 2 === 0 ? y * y : y * y * x
 }
-
-x = 2
-n = 6
-console.log(myPow(x, n))
 // @lc code=end
