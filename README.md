@@ -6,3 +6,4 @@ e => easy
 m => medium
 h => hard
 n => fail
+p => pending
