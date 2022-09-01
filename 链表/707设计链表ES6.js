@@ -16,7 +16,7 @@ class MyLinkedList {
 	}
 	// 获取节点
 	getNode(index) {
-    if (index < 0 || index > this.size) {
+    if (index < 0 || index >= this.size) {
       return null
     }
 		// 创建虚拟节点
